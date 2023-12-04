@@ -36,7 +36,7 @@ def part2():
                 lowest_cubes["red"] * lowest_cubes["green"] * lowest_cubes["blue"]
             )
 
-    return power_cubes
+    return power_cubes  
 
 
 print("Part One : " + str(part1()))
