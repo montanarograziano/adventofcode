@@ -1,5 +1,5 @@
 # Advent of code Year 2023 Day 12 solution
-# Author = ?
+# Author = montanarograziano
 # Date = December 2018
 
 with open((__file__.rstrip("code.py")+"input.txt"), 'r') as input_file:
