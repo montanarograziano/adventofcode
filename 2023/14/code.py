@@ -1,6 +1,9 @@
 # Advent of code Year 2023 Day 14 solution
 # Author = montanarograziano
 # Date = December 2023
+import sys
+
+FILENAME = sys.argv[1] if len(sys.argv) > 1 else "test.txt"
 
 
 def cycle(grid):
@@ -16,10 +19,11 @@ def cycle(grid):
             for row in grid
         ]
         grid = tuple([row[::-1] for row in grid])
+    return grid
 
 
 def part1():
-    with open((__file__.rstrip("code.py") + "input.txt"), "r") as input_file:
+    with open((__file__.rstrip("code.py") + FILENAME), "r") as input_file:
         grid = input_file.read().splitlines()
         grid = list(map("".join, zip(*grid)))
         grid = [
@@ -39,7 +43,7 @@ def part1():
 
 
 def part2():
-    with open((__file__.rstrip("code.py") + "input.txt"), "r") as input_file:
+    with open((__file__.rstrip("code.py") + FILENAME), "r") as input_file:
         grid = tuple(input_file.read().splitlines())
         seen = {grid}
         array = [grid]
@@ -47,7 +51,7 @@ def part2():
         iter = 0
         while True:
             iter += 1
-            cycle(grid)
+            grid = cycle(grid)
             if grid in seen:
                 break
             seen.add(grid)
@@ -60,7 +64,11 @@ def part2():
         return sum(row.count("O") * (len(grid) - r) for r, row in enumerate(grid))
 
 
-print("Part One : " + str(part1()))
+def main():
+    print(f"Reading file {FILENAME}")
+    print("Part One : " + str(part1()))
+    print("Part Two : " + str(part2()))
 
 
-print("Part Two : " + str(part2()))
+if __name__ == "__main__":
+    main()

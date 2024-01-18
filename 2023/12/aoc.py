@@ -15,12 +15,12 @@ def part1():
     with open(__file__.rstrip("aoc.py") + "input.txt", "r") as input_file:
         total = 0
         input = input_file.read().splitlines()
-        springs, conds = (
+        springs, groups = (
             [line.split(" ")[0] for line in input],
             [line.split(" ")[1] for line in input],
         )
         idx = 1
-        for s, c in zip(springs, conds):
+        for s, c in zip(springs, groups):
             print(idx)
             subs = []
             to_fill = sum(int(i) for i in c.split(",")) - s.count("#")
